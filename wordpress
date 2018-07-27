@@ -1,0 +1,23 @@
+<?php
+ 
+add_filter( 'manage_posts_columns', 'manage_posts_columns_example', 5 );
+add_action( 'manage_posts_custom_column', 'manage_posts_custom_column_example', 5, 2 );
+ 
+function manage_posts_columns_example( $columns ) {
+    $columns['post_attachments'] = __( 'Attached', 'theme-name' );
+    return $columns;
+}
+ 
+function manage_posts_custom_column_example( $column_name, $post_id ) {
+    if( 'post_attachments' == $column_name ) {
+        $attachments = get_children( array( 'post_parent' => $post_id ) );
+        $count = count( $attachments );
+        if( $count != 0 ) {
+            echo $count;
+        }
+    }
+}
+ 
+// Example Source: http://wpsnipp.com/index.php/functions-php/display-post-attachment-count-in-admin-column/
+ 
+?>
