@@ -1,0 +1,7 @@
+main()
+def { hello devops
+    it is a git
+    good morning 
+    to merge this both files
+    
+    }
